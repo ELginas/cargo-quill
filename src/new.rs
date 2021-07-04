@@ -103,12 +103,19 @@ fn change_lib_rs(config: &Config) -> anyhow::Result<()> {
 
     let mut file = OpenOptions::new().write(true).open(path)?;
 
-    let name_str = String::from(config.name.clone().to_str().unwrap());
-    let plugin_name = name_str.to_case(Case::Pascal) + "Plugin";
+    let plugin_name = get_plugin_name(config);
     let text = LIB_RS_FILE_TEXT.replace("$plugin_name", &plugin_name[..]);
     file.write(text.as_bytes())?;
 
     Ok(())
+}
+
+fn get_plugin_name(config: &Config) -> String {
+    let mut name_str = String::from(config.name.clone().to_str().unwrap());
+    if name_str.to_lowercase().ends_with("plugin") {
+        name_str = String::from(name_str.strip_suffix("plugin").unwrap());
+    }
+    name_str.to_case(Case::Pascal) + "Plugin"
 }
 
 fn read_lines(path: &PathBuf) -> anyhow::Result<Vec<String>> {
