@@ -46,7 +46,7 @@ Now launch Minecraft version 1.16 and connect to `localhost:25565`. Once you fly
 
 *Note: I am using Windows. The only difference between operating systems is that your Feather server executable name will vary.*
 
-# Your own plugin (WIP)
+# Your own plugin
 
 First, you need to make your plugin directory, to do this, you need to run:
 ```
