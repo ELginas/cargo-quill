@@ -24,7 +24,7 @@ struct $plugin_name {}
 
 impl Plugin for $plugin_name {
     fn enable(_game: &mut Game, _setup: &mut Setup<Self>) -> Self {
-        $plugin_name {}
+        Self {}
     }
 
     fn disable(self, _game: &mut Game) {}
