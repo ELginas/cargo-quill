@@ -119,11 +119,11 @@ fn build(args: Build) -> anyhow::Result<()> {
             path.push("plugins");
             path.push(format!("{}.plugin", meta.identifier));
             path
-        },
+        }
         None => module_path
             .parent()
             .unwrap()
-            .join(format!("{}.plugin", meta.identifier))
+            .join(format!("{}.plugin", meta.identifier)),
     };
     fs::write(&target_path, file.encode(args.compression_level))?;
 
